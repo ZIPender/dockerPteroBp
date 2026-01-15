@@ -1,9 +1,25 @@
 x-common:
-  database: &db-environment
-    # Do not remove the "&db-password" from the end of the line below, it is important
-    # for Panel functionality.
-    MARIADB_PASSWORD: &db-password "${MARIADB_USER_PASS}"
-    MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASS}"
+    database:
+    image: mariadb:11
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --max-connections=2000
+    volumes:
+      - "/srv/pterodactyl/database:/var/lib/mysql"
+    environment:
+      MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASS}"
+      MARIADB_DATABASE: "panel"
+      MARIADB_USER: "pterodactyl"
+      MARIADB_PASSWORD: "${MARIADB_USER_PASS}"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - pterodactyl_stack
+    ports:
+      - "3306:3306"
 
   cache: &redis-environment
     REDIS_PASSWORD: &redis-password "${VALKEY_PASS}"
