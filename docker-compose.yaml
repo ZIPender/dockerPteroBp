@@ -90,6 +90,12 @@ services:
     restart: always
     ports:
       - "${PANEL_PORT}:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.panel2.rule=Host(`panel2.ezha.fr`)"
+      - "traefik.http.routers.panel2.entrypoints=websecure"
+      - "traefik.http.routers.panel2.tls=true"
+      - "traefik.http.services.panel2.loadbalancer.server.port=80"
     links:
       - database
       - cache
@@ -165,6 +171,9 @@ networks:
       driver: default
       config:
         - subnet: "172.20.0.0/24"
+  coolify:
+    external: true
+    name: coolify
 
 volumes:
   app:
