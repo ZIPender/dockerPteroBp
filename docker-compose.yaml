@@ -92,10 +92,11 @@ services:
       - "${PANEL_PORT}:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.panel2.rule=Host(`panel2.ezha.fr`)"
-      - "traefik.http.routers.panel2.entrypoints=websecure"
-      - "traefik.http.routers.panel2.tls=true"
-      - "traefik.http.services.panel2.loadbalancer.server.port=80"
+      - "traefik.http.routers.ezha-panel.rule=Host(`panel2.ezha.fr`)"
+      - "traefik.http.routers.ezha-panel.entrypoints=websecure"
+      - "traefik.http.routers.ezha-panel.tls=true"
+      - "traefik.http.services.ezha-panel.loadbalancer.server.port=80"
+
     volumes:
       - "/srv/pterodactyl/var/:/app/var/"
       - "/srv/pterodactyl/nginx/:/etc/nginx/http.d/"
