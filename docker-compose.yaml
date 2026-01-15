@@ -139,6 +139,7 @@ services:
     image: ghcr.io/loki-101/cwings:v1.12.0
     restart: always
     ports:
+      - "8443:8443"
       - "${WINGS_SFTP_PORT}:${WINGS_SFTP_PORT}"
     tty: true
     environment:
