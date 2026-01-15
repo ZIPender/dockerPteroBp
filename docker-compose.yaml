@@ -2,8 +2,8 @@ x-common:
   database: &db-environment
     # Do not remove the "&db-password" from the end of the line below, it is important
     # for Panel functionality.
-    MYSQL_PASSWORD: &db-password "${MARIADB_USER_PASS}"
-    MYSQL_ROOT_PASSWORD: "${MARIADB_ROOT_PASS}"
+    MARIADB_PASSWORD: &db-password "${MARIADB_USER_PASS}"
+    MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASS}"
 
   cache: &redis-environment
     REDIS_PASSWORD: &redis-password "${VALKEY_PASS}"
@@ -54,8 +54,8 @@ services:
       - "/srv/pterodactyl/database:/var/lib/mysql"
     environment:
       <<: *db-environment
-      MYSQL_DATABASE: "panel"
-      MYSQL_USER: "pterodactyl"
+      MARIADB_DATABASE: "panel"
+      MARIADB_USER: "pterodactyl"
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 30s
