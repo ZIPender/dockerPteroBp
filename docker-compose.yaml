@@ -167,6 +167,7 @@ services:
       - "traefik.http.routers.ezha-wings.entrypoints=https"
       - "traefik.http.routers.ezha-wings.tls=true"
       - "traefik.http.services.ezha-wings.loadbalancer.server.port=8080"
+      - "traefik.http.routers.ezha-wings.service=ezha-wings"
     networks:
       - pterodactyl_stack
       - coolify
