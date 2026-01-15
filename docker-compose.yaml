@@ -96,9 +96,6 @@ services:
       - "traefik.http.routers.panel2.entrypoints=websecure"
       - "traefik.http.routers.panel2.tls=true"
       - "traefik.http.services.panel2.loadbalancer.server.port=80"
-    links:
-      - database
-      - cache
     volumes:
       - "/srv/pterodactyl/var/:/app/var/"
       - "/srv/pterodactyl/nginx/:/etc/nginx/http.d/"
