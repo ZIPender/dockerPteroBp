@@ -161,8 +161,16 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.routers.ezha-wings.rule=Host(`node2.ezha.fr`)"
+      - "traefik.http.routers.ezha-wings.entrypoints=https"
+      - "traefik.http.routers.ezha-wings.tls=true"
+      - "traefik.http.services.ezha-wings.loadbalancer.server.port=8443"
     networks:
       - pterodactyl_stack
+      - coolify
 
 networks:
   pterodactyl_stack:
