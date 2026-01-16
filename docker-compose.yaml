@@ -93,7 +93,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=coolify"
-      - "traefik.http.routers.ezha-panel.rule=Host(`panel2.ezha.fr`)"
+      - "traefik.http.routers.ezha-panel.rule=Host(`panel.ezha.fr`)"
       - "traefik.http.routers.ezha-panel.entrypoints=https"
       - "traefik.http.routers.ezha-panel.tls=true"
       - "traefik.http.services.ezha-panel.loadbalancer.server.port=80"
