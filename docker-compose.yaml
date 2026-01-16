@@ -17,7 +17,7 @@ x-common:
     # Uncomment the line below and set to a non-empty value if you want to use Let's Encrypt
     # to generate an SSL certificate for the Panel.
     # LE_EMAIL: ""
-    # TRUSTED_PROXIES: "${TRUSTED_PROXIES}"
+    TRUSTED_PROXIES: "${TRUSTED_PROXIES}"
     RECAPTCHA_ENABLED: "${RECAPTCHA_ENABLED}"
     RECAPTCHA_WEBSITE_KEY: "${RECAPTCHA_SITE_KEY}"
     RECAPTCHA_SECRET_KEY: "${RECAPTCHA_SECRET_KEY}"
