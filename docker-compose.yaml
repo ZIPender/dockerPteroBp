@@ -156,7 +156,7 @@ services:
       - "/tmp/pterodactyl/:/tmp/pterodactyl/"
       - "/srv/pterodactyl/certs/:/etc/letsencrypt/live:ro"
     healthcheck:
-      test: ["CMD", "/usr/bin/wings", "--version"]
+      test: ["CMD", "/usr/bin/wings", "version"]
       interval: 30s
       timeout: 10s
       retries: 3
