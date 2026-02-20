@@ -87,7 +87,7 @@ services:
       - pterodactyl_stack
 
   panel:
-    image: ghcr.io/blueprintframework/blueprint:v1.11.11
+    image: ghcr.io/blueprintframework/blueprint:v1.12.1
     restart: always
     ports:
       - "127.0.0.1:${PANEL_PORT}:80"
